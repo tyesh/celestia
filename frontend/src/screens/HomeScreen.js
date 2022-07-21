@@ -1,9 +1,10 @@
 import React from 'react';
+import HeroSection from '../components/HeroSection';
 
 const HomeScreen = () => {
   return (
     <main>
-      <h1>Welcome to Celestia</h1>
+      <HeroSection />
     </main>
   );
 };
