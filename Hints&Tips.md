@@ -44,9 +44,3 @@ Some quantities are calculated by means of a formula containing powers if the ti
 e = 0.04638122 - 0.0000272937T + 0.0000000789T²
 
 This gives the eccentricity e of the orbit of Uranus, T is the time measured in Julian centuries (36525 days) from the beginnig of the year 2000. It is evident that this formula is valid only a limited number of centuries before and after A.D. 2000. For instance for T liying between -30 and +30. For |T| much larger than 30, the above expression is not longer valid. For T = -3307.9 the formula would give e = -1, This will indicate that in the year -328790 the orbit of Uranus was a parabolic and hence that this planet originate fro outside our solar system.
-
-# About Accuracy
-
-## The accuracy needed for a given problem
-
-The accuracy needed in a calculation depends of its aim. For example
