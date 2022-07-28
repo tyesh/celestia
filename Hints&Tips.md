@@ -57,7 +57,7 @@ The programmer, who know his formulae and the desired accuracy in a given proble
 
 _L_ = 280º27'59",245 + 129602771".380*T* + 1".0915T*T*²
 
-where *T*is the time in Julian centuries of 36525 ephemeris days from the epoch 2000 January 1.5 TD, In this expression, the last term (secular acceleration of the Sun) is smaller that 1" if |_T_| < 0.95, that is, between the years 1905 and 2095. If an accuracy of 1" is suficient, tthe term in *T*² may thus be dropped- But for the year +100 we have _T_ = -19, so that the last term become 394", wich is larger that 0.1 degree.
+where _T_ is the time in Julian centuries of 36525 ephemeris days from the epoch 2000 January 1.5 TD, In this expression, the last term (secular acceleration of the Sun) is smaller that 1" if |_T_| < 0.95, that is, between the years 1905 and 2095. If an accuracy of 1" is suficient, tthe term in *T*² may thus be dropped- But for the year +100 we have _T_ = -19, so that the last term become 394", wich is larger that 0.1 degree.
 
 ## Rounding the final result
 
@@ -65,6 +65,6 @@ Results should be rounded correctly and meaningfully, where it is necessary. Rou
 
 Only meaningful digis should by retained. For example visual magnitude with _m_ = -1712514898, gives a false impression of high accuracy.
 
-The rounding should by perfomed _after_ the whole calculation has been made, not before the start of before the input of data into the computer,
+The rounding should by perfomed **after** the whole calculation has been made, not before the start of before the input of data into the computer,
 
-Trailing zeros _must_ be given in the result to indicate the accuracy. A start of magnitude 7 is not the same as a star of magnitude 7.00.
+Trailing zeros **must** be given in the result to indicate the accuracy. A start of magnitude 7 is not the same as a star of magnitude 7.00.
