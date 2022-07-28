@@ -43,4 +43,28 @@ Some quantities are calculated by means of a formula containing powers if the ti
 
 e = 0.04638122 - 0.0000272937T + 0.0000000789T²
 
-This gives the eccentricity e of the orbit of Uranus, T is the time measured in Julian centuries (36525 days) from the beginnig of the year 2000. It is evident that this formula is valid only a limited number of centuries before and after A.D. 2000. For instance for T liying between -30 and +30. For |T| much larger than 30, the above expression is not longer valid. For T = -3307.9 the formula would give e = -1, This will indicate that in the year -328790 the orbit of Uranus was a parabolic and hence that this planet originate fro outside our solar system.
+This gives the eccentricity e of the orbit of Uranus, T is the time measured in Julian centuries (36525 days) from the beginnig of the year 2000. It is evident that this formula is valid only a limited number of centuries before and after A.D. 2000. For instance for T liying between -30 and +30. For |T| much larger than 30, the above expression is not longer valid. For T = -3307.9 the formula would give e = -1, This will indicate that in the year -328790 the orbit of Uranus was a parabolic and hence that this planet originate for outside our solar system.
+
+# About Accuracy
+
+## The accuracy needed for a given problem
+
+The accuracy needed in a calculation depends of its aim. For example, if one wants to calculate the position of a planet with the goal of obtaining the times of rising and setting for a given place, an accuracy of 0.001 or even 0.01 degree wil be suficient. The apparaent diurnal mition of the celestial sphere corresponds to a rotation over one degree during a time interval of for minutes, and so an error of 0.01 degree in the object's position will result in a error of only 0.04 minute (approximately) in its time of rising or setting.
+
+But if the position of the planet is neededto calculate the ocultation of a star by that planet, them a accuracy of better that 1" will be necessary by the reason of the small planet's disk.
+
+The programmer, who know his formulae and the desired accuracy in a given problem, must himselft consider wich terms, if any, may be omitted in order to keep the program handsome and as short as possible. For instance, the mean geometric longitude of the sun, referred to the mean equinox of the date, is given by
+
+_L_ = 280º27'59",245 + 129602771".380*T* + 1".0915T*T*²
+
+where *T*is the time in Julian centuries of 36525 ephemeris days from the epoch 2000 January 1.5 TD, In this expression, the last term (secular acceleration of the Sun) is smaller that 1" if |_T_| < 0.95, that is, between the years 1905 and 2095. If an accuracy of 1" is suficient, tthe term in *T*² may thus be dropped- But for the year +100 we have _T_ = -19, so that the last term become 394", wich is larger that 0.1 degree.
+
+## Rounding the final result
+
+Results should be rounded correctly and meaningfully, where it is necessary. Rounding should by made to the _nearest_ vaule. For instace, 15.88 is to be rounded to 15.9, or to 16m not to 15. However, calendar dates and years are exceptions. For example, March 15.88 denotes an instace beloging to March 15, it means 0.88 day after March 15, 0h. So, if we read that an event occurs on March 15.88, it takes place on March 15, not March 16.
+
+Only meaningful digis should by retained. For example visual magnitude with _m_ = -1712514898, gives a false impression of high accuracy.
+
+The rounding should by perfomed _after_ the whole calculation has been made, not before the start of before the input of data into the computer,
+
+Trailing zeros _must_ be given in the result to indicate the accuracy. A start of magnitude 7 is not the same as a star of magnitude 7.00.
