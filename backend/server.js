@@ -5,6 +5,8 @@ import colors from 'colors';
 import morgan from 'morgan';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
+import pgRoutes from './routes/playgroundRoutes.js';
+
 dotenv.config();
 
 const app = express();
@@ -12,6 +14,10 @@ const app = express();
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
+
+app.use(express.json());
+
+app.use('/api/pg', pgRoutes);
 
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
