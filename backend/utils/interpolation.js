@@ -1,32 +1,52 @@
-const interpolateThreeTabValues = (x, y, z) => {
-  x = [12, 16, 20];
-  y = [1.3814294, 1.3812213, 1.3812453];
-  z = 0.18125;
-  if (Array.isArray(x) && Array.isArray(y)) {
-    if (x.length === 3 && y.length === 3 && x.length === y.length) {
-      const a = y[1] - y[0];
-      console.log(a);
-      const b = y[2] - y[1];
-      console.log(b);
+const interpolateThreeTabValues = (valuesX, valuesY, x) => {
+  x = 8 + 4.35 / 24;
+  if (Array.isArray(valuesX) && Array.isArray(valuesY)) {
+    if (valuesX.length === 3 && valuesY.length === 3) {
+      const a = valuesY[1] - valuesY[0];
+      const b = valuesY[2] - valuesY[1];
       const c = b - a;
-      console.log(c);
-      let n = y[0];
-      for (let index = 1; index < y.length; index++) {
-        if (Math.abs(z - y[index]) < n) {
-          n = y[index];
-        }
-      }
-      console.log(n);
-      n = z - n;
-      console.log(n);
-      const y1 = y[2] + (n / 2) * (a + b + n * c);
-      console.log(y1);
-      const ym = y[2] - (((a + b) * (a + b)) / 8) * c;
-      console.log(ym);
-      const nm = (-(a + b) / 2) * c;
-      console.log(nm);
+      const n = x - valuesX[1];
+      const y = valuesY[1] + (n / 2) * (a + b + n * c);
+      return {
+        a,
+        b,
+        c,
+        n,
+        y,
+      };
     }
   }
 };
 
-export { interpolateThreeTabValues };
+const interpolateThreeTabMinMax = (valuesX, valuesY) => {
+  if (Array.isArray(valuesX) && Array.isArray(valuesY)) {
+    if (valuesX.length === 3 && valuesY.length === 3) {
+      const a = valuesY[1] - valuesY[0];
+      const b = valuesY[2] - valuesY[1];
+      const c = b - a;
+      const ym = valuesY[1] - ((a + b) * (a + b)) / (8 * c);
+      const nm = -((a + b) / (2 * c));
+      return {
+        a,
+        b,
+        c,
+        ym,
+        nm,
+      };
+    }
+  }
+};
+
+const getCentralIndex = (valuesX, x) => {
+  let xm = Math.abs(x - valuesX[0]);
+  let central = 0;
+  for (let index = 1; index < valuesX.length; index++) {
+    if (Math.abs(x - valuesX[index]) < xm) {
+      xm = Math.abs(x - valuesX[index]);
+      central = index;
+    }
+  }
+  return central;
+};
+
+export { interpolateThreeTabValues, interpolateThreeTabMinMax };
