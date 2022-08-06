@@ -22,8 +22,8 @@ const angleToDegrees = (hour, minutes, seconds, negative) => {
   return (hour + minutes / 60 + seconds / 3600) * 15;
 };
 
-const angleToRadians = (hour, minutes, seconds) => {
-  return (angleToDegrees(hour, minutes, seconds) * Math.PI) / 180;
+const angleToRadians = (hour, minutes, seconds, negative) => {
+  return (angleToDegrees(hour, minutes, seconds, negative) * Math.PI) / 180;
 };
 
 export { reduceAngleTo360, angleToDegrees, angleToRadians };
